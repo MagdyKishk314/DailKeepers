@@ -1,7 +1,6 @@
 /* Dialkeepers landing page. No dependencies.
    Everything on the page is in the HTML already, so crawlers, screen readers and no-JS
    visitors see all of it. This script adds a little motion on top:
-   - counts the sample-audit figures up when they scroll into view
    - fades sections in once, as they arrive
    - firms up the top bar once the page has scrolled
    - sends the form without a page reload */
@@ -32,40 +31,7 @@
     syncTopbar();
   }
 
-  /* ---------- Count-up for the sample-audit figures ---------- */
-  function countUp(el) {
-    var to = Number(el.dataset.to);
-    var suffix = el.dataset.suffix || "";
-    var start = performance.now();
-    var duration = 1400;
-    function tick(now) {
-      var p = Math.min(1, (now - start) / duration);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(to * eased).toLocaleString("en-US") + suffix;
-      if (p < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }
-
   if (hasIO && !reduce) {
-    var counts = [].slice.call(document.querySelectorAll(".count"));
-    counts.forEach(function (el) {
-      el.textContent = "0" + (el.dataset.suffix || "");
-    });
-    var countIO = new IntersectionObserver(
-      function (items) {
-        items.forEach(function (item) {
-          if (!item.isIntersecting) return;
-          countIO.unobserve(item.target);
-          countUp(item.target);
-        });
-      },
-      { threshold: 0.6 }
-    );
-    counts.forEach(function (el) {
-      countIO.observe(el);
-    });
-
     /* ---------- Fade sections in, once ---------- */
     var targets = [].slice.call(
       document.querySelectorAll(
