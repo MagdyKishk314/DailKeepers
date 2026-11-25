@@ -45,13 +45,26 @@
 <div class="first-screen">
 <div class="frame">
   <section class="panel on-navy" id="top" aria-labelledby="h-hero">
-    <!-- Decorative background: dot grid, rings pulsing out like a call ringing, and sound waves. -->
+    <!-- Decorative background: a signal that is jagged on the left (an unmanaged dialer) and
+         turns steady on the right (managed by a Keeper). main.js animates it. -->
     <div class="hero-bg" aria-hidden="true">
-      <span class="ring"></span><span class="ring"></span><span class="ring"></span><span class="ring"></span>
-      <div class="waves">
-        <svg class="wave wave-1" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 80 Q180 10 360 80 T720 80 T1080 80 T1440 80 T1800 80 T2160 80 T2520 80 T2880 80"/></svg>
-        <svg class="wave wave-2" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 80 Q120 30 240 80 T480 80 T720 80 T960 80 T1200 80 T1440 80 T1680 80 T1920 80 T2160 80 T2400 80 T2640 80 T2880 80"/></svg>
-        <svg class="wave wave-3" viewBox="0 0 2880 160" preserveAspectRatio="none"><path d="M0 80 Q240 140 480 80 T960 80 T1440 80 T1920 80 T2400 80 T2880 80"/></svg>
+      <div class="signal">
+        <svg viewBox="0 0 1000 200" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="sig-grad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+              <stop offset="0" stop-color="#a9b8c6" stop-opacity="0.15"/>
+              <stop offset="0.4" stop-color="#a9b8c6" stop-opacity="0.5"/>
+              <stop offset="0.6" stop-color="#f2a33a" stop-opacity="0.9"/>
+              <stop offset="1" stop-color="#f2a33a" stop-opacity="0.35"/>
+            </linearGradient>
+          </defs>
+          <path class="sig sig-echo" d="M0 100H1000"/>
+          <path class="sig sig-echo" d="M0 100H1000"/>
+          <path class="sig sig-main" d="M0 100H1000"/>
+        </svg>
+        <span class="sig-dot"></span>
+        <span class="sig-label sig-before">Unmanaged</span>
+        <span class="sig-label sig-after">Managed by a Keeper</span>
       </div>
     </div>
     <div class="wrap hero">

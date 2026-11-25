@@ -1,6 +1,7 @@
 /* Dialkeepers landing page. No dependencies.
    Everything on the page is in the HTML already, so crawlers, screen readers and no-JS
    visitors see all of it. This script adds a little motion on top:
+   - animates the hero signal (jagged when unmanaged, steady once managed)
    - fades sections in once, as they arrive
    - firms up the top bar once the page has scrolled
    - sends the form without a page reload */
@@ -56,6 +57,73 @@
       el.classList.add("reveal");
       revealIO.observe(el);
     });
+  }
+
+  /* ---------- Hero signal: jagged on the left, steady on the right ---------- */
+  var signal = document.querySelector(".signal");
+  if (signal) {
+    var paths = signal.querySelectorAll(".sig");
+    var dot = signal.querySelector(".sig-dot");
+    var W = 1000;
+    var MID = 100;
+    var STEP = 4;
+
+    // 0 on the left (unmanaged), easing to 1 on the right (managed).
+    var calmAt = function (u) {
+      var k = Math.min(1, Math.max(0, (u - 0.38) / 0.24));
+      return k * k * (3 - 2 * k);
+    };
+    var yAt = function (u, t) {
+      var calm = calmAt(u);
+      var chaos =
+        (0.55 * Math.sin(u * 38 + t * 2.3) +
+          0.35 * Math.sin(u * 71 - t * 3.1 + 1.3) +
+          0.25 * Math.sin(u * 113 + t * 4.7 + 2.1)) *
+        (0.6 + 0.4 * Math.sin(u * 9 + t * 1.7));
+      var steady = Math.sin(u * 16 - t * 1.4);
+      return MID + (1 - calm) * 70 * chaos + calm * 24 * steady;
+    };
+    var draw = function (t) {
+      for (var i = 0; i < paths.length; i++) {
+        // The two echoes are fainter copies a little behind in time and smaller.
+        var lag = (paths.length - 1 - i) * 0.6;
+        var scale = 1 - (paths.length - 1 - i) * 0.25;
+        var d = "M0 " + yAt(0, t - lag).toFixed(1);
+        for (var x = STEP; x <= W; x += STEP) {
+          var y = MID + (yAt(x / W, t - lag) - MID) * scale;
+          d += "L" + x + " " + y.toFixed(1);
+        }
+        paths[i].setAttribute("d", d);
+      }
+      if (dot) dot.style.top = (yAt(0.5, t) / 2).toFixed(2) + "%";
+    };
+
+    if (reduce) {
+      draw(0);
+    } else {
+      // Only animate while the hero is on screen.
+      var running = false;
+      var loop = function (now) {
+        if (!running) return;
+        draw(now / 1000);
+        requestAnimationFrame(loop);
+      };
+      var start = function (on) {
+        if (on && !running) {
+          running = true;
+          requestAnimationFrame(loop);
+        } else if (!on) {
+          running = false;
+        }
+      };
+      if (hasIO) {
+        new IntersectionObserver(function (items) {
+          start(items[0].isIntersecting);
+        }).observe(signal);
+      } else {
+        start(true);
+      }
+    }
   }
 
   /* ---------- Form ---------- */

@@ -330,7 +330,7 @@ html {
   text-align: center;
 }
 
-/* ---------- Hero background: dot grid, ringing pulses, sound waves ---------- */
+/* ---------- Hero background: dot grid and the signal ---------- */
 .panel {
   position: relative;
   overflow: hidden;
@@ -352,79 +352,64 @@ html {
   -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 30%, transparent 100%);
   mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 30%, transparent 100%);
 }
-/* Rings that grow out from behind the headline, like a call ringing out. */
-.ring {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  width: 260px;
-  height: 260px;
-  margin: -130px 0 0 -130px;
-  border: 1.5px solid var(--amber);
-  border-radius: 50%;
-  opacity: 0;
-  animation: ring 8s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
-}
-.ring:nth-child(2) {
-  animation-delay: -2s;
-}
-.ring:nth-child(3) {
-  animation-delay: -4s;
-}
-.ring:nth-child(4) {
-  animation-delay: -6s;
-}
-@keyframes ring {
-  0% {
-    transform: scale(0.4);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.45;
-  }
-  100% {
-    transform: scale(5);
-    opacity: 0;
-  }
-}
-/* Sound waves along the bottom. Each SVG is twice the panel width and slides by half,
-   so the loop is seamless. */
-.waves {
+/* The signal: jagged on the left, steady on the right. The path is drawn by main.js. */
+.signal {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 6%;
-  height: 160px;
+  bottom: 5%;
+  height: 140px;
 }
-.wave {
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 200%;
+.signal svg {
+  width: 100%;
   height: 100%;
+  overflow: visible;
+}
+.sig {
   fill: none;
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-  animation: wave 18s linear infinite;
-}
-.wave path {
+  stroke: url(#sig-grad);
+  stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
-.wave-1 {
-  stroke: rgba(242, 163, 58, 0.45);
+.sig-main {
+  stroke-width: 2;
 }
-.wave-2 {
-  stroke: rgba(247, 245, 240, 0.16);
-  animation-duration: 12s;
-  animation-direction: reverse;
+.sig-echo {
+  stroke-width: 1;
+  opacity: 0.45;
 }
-.wave-3 {
-  stroke: rgba(242, 163, 58, 0.2);
-  animation-duration: 26s;
+/* Marks the point where the Keeper steps in and the signal turns steady. */
+.sig-dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 6px rgba(242, 163, 58, 0.18);
+  animation: sig-dot 2.4s ease-in-out infinite;
 }
-@keyframes wave {
-  to {
-    transform: translateX(-50%);
+@keyframes sig-dot {
+  50% {
+    box-shadow: 0 0 0 12px rgba(242, 163, 58, 0.06);
   }
+}
+.sig-label {
+  position: absolute;
+  bottom: -14px;
+  font: 600 0.72rem/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.sig-before {
+  left: 4%;
+  color: rgba(169, 184, 198, 0.55);
+}
+.sig-after {
+  right: 4%;
+  color: rgba(242, 163, 58, 0.8);
 }
 .hero-copy h1 {
   max-width: 16ch;
@@ -1108,6 +1093,13 @@ h3 {
   }
 }
 @media (max-width: 600px) {
+  .signal {
+    height: 120px;
+    bottom: 4%;
+  }
+  .sig-label {
+    font-size: 0.62rem;
+  }
   .frame {
     padding: 8px;
   }
@@ -1156,23 +1148,8 @@ h3 {
   .hero-in {
     animation: none;
   }
-  /* Hero background holds still: rings frozen at different sizes, waves parked. */
-  .ring,
-  .wave {
+  .sig-dot {
     animation: none;
-  }
-  .ring {
-    opacity: 0.16;
-    transform: scale(1);
-  }
-  .ring:nth-child(2) {
-    transform: scale(2);
-  }
-  .ring:nth-child(3) {
-    transform: scale(3);
-  }
-  .ring:nth-child(4) {
-    transform: scale(4);
   }
   .reveal {
     opacity: 1;
