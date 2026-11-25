@@ -433,14 +433,6 @@ html {
   margin-top: 32px;
 }
 
-.status {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
 /* One entrance for the hero, and nothing else moves by itself. */
 @keyframes rise {
   from {
@@ -651,99 +643,6 @@ h3 {
   font: 800 0.72rem/1 var(--text);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-/* ---------- Figures and the log ---------- */
-
-.console {
-  max-width: 820px;
-  margin: 0 auto;
-  background: var(--raised);
-  color: var(--paper);
-  border: 1px solid rgba(247, 245, 240, 0.16);
-  border-radius: var(--r-l);
-  overflow: hidden;
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
-}
-.console-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 16px 22px;
-  border-bottom: 1px solid rgba(247, 245, 240, 0.16);
-}
-.dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--amber);
-  box-shadow: 0 0 0 4px rgba(242, 163, 58, 0.25);
-}
-.legend {
-  display: flex;
-  gap: 16px;
-  font-size: 0.82rem;
-  color: var(--slate-dark);
-}
-.key {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-}
-.key::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 3px;
-}
-.key.ok::before {
-  background: var(--slate-dark);
-}
-.key.watch::before {
-  background: var(--amber);
-}
-.log {
-  list-style: none;
-  margin: 0;
-  padding: 8px 0;
-}
-.entry {
-  display: grid;
-  grid-template-columns: 5.6rem 1fr;
-  gap: 10px;
-  padding: 13px 22px 13px 19px;
-  border-left: 3px solid transparent;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-.entry + .entry {
-  border-top: 1px solid rgba(247, 245, 240, 0.07);
-}
-.entry .when {
-  font-family: var(--mono);
-  font-size: 0.85rem;
-  color: var(--slate-dark);
-  padding-top: 2px;
-}
-.entry b {
-  font-weight: 800;
-}
-.entry.ok {
-  border-left-color: var(--slate-dark);
-}
-.entry.watch {
-  border-left-color: var(--amber);
-}
-.entry code {
-  color: var(--amber);
-}
-.console-foot {
-  padding: 14px 22px;
-  border-top: 1px solid rgba(247, 245, 240, 0.16);
-  font-size: 0.85rem;
-  color: var(--slate-dark);
 }
 
 /* ---------- Commitments: four navy tiles with a big figure ---------- */
@@ -1114,9 +1013,6 @@ h3 {
   }
   .actions .btn {
     width: 100%;
-  }
-  .entry {
-    grid-template-columns: 4.6rem 1fr;
   }
 }
 
