@@ -325,7 +325,106 @@ html {
 }
 /* One centred column: headline, paragraph, buttons. */
 .hero {
+  position: relative;
+  z-index: 1;
   text-align: center;
+}
+
+/* ---------- Hero background: dot grid, ringing pulses, sound waves ---------- */
+.panel {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+/* Faint dot grid, fading out towards the edges. */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(247, 245, 240, 0.14) 1px, transparent 1.5px);
+  background-size: 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, #000 30%, transparent 100%);
+}
+/* Rings that grow out from behind the headline, like a call ringing out. */
+.ring {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  margin: -130px 0 0 -130px;
+  border: 1.5px solid var(--amber);
+  border-radius: 50%;
+  opacity: 0;
+  animation: ring 8s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+.ring:nth-child(2) {
+  animation-delay: -2s;
+}
+.ring:nth-child(3) {
+  animation-delay: -4s;
+}
+.ring:nth-child(4) {
+  animation-delay: -6s;
+}
+@keyframes ring {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+/* Sound waves along the bottom. Each SVG is twice the panel width and slides by half,
+   so the loop is seamless. */
+.waves {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6%;
+  height: 160px;
+}
+.wave {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 200%;
+  height: 100%;
+  fill: none;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+  animation: wave 18s linear infinite;
+}
+.wave path {
+  vector-effect: non-scaling-stroke;
+}
+.wave-1 {
+  stroke: rgba(242, 163, 58, 0.45);
+}
+.wave-2 {
+  stroke: rgba(247, 245, 240, 0.16);
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+.wave-3 {
+  stroke: rgba(242, 163, 58, 0.2);
+  animation-duration: 26s;
+}
+@keyframes wave {
+  to {
+    transform: translateX(-50%);
+  }
 }
 .hero-copy h1 {
   max-width: 16ch;
@@ -1056,6 +1155,24 @@ h3 {
   }
   .hero-in {
     animation: none;
+  }
+  /* Hero background holds still: rings frozen at different sizes, waves parked. */
+  .ring,
+  .wave {
+    animation: none;
+  }
+  .ring {
+    opacity: 0.16;
+    transform: scale(1);
+  }
+  .ring:nth-child(2) {
+    transform: scale(2);
+  }
+  .ring:nth-child(3) {
+    transform: scale(3);
+  }
+  .ring:nth-child(4) {
+    transform: scale(4);
   }
   .reveal {
     opacity: 1;
