@@ -587,14 +587,15 @@ h3 {
   content: "";
   position: absolute;
   top: 27px;
-  left: 28px;
-  /* Stop at the centre of the last circle: one column (minus its 28px half-circle) from the end. */
-  right: calc((100% - 96px) / 4 - 28px);
+  /* From the centre of the first column to the centre of the last (half a column in from each side). */
+  left: calc((100% - 96px) / 8);
+  right: calc((100% - 96px) / 8);
   border-top: 2px dashed var(--rule);
 }
 .timeline li {
   position: relative;
   counter-increment: step;
+  text-align: center;
 }
 .timeline li::before {
   content: counter(step);
@@ -602,7 +603,7 @@ h3 {
   place-items: center;
   width: 56px;
   height: 56px;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
   border-radius: 50%;
   background: var(--navy);
   color: var(--paper);
@@ -616,6 +617,7 @@ h3 {
 .timeline h3 {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 8px;
 }
@@ -1062,11 +1064,16 @@ h3 {
   .timeline li {
     padding-left: 80px;
     min-height: 56px;
+    text-align: left;
   }
   .timeline li::before {
     position: absolute;
     left: 0;
     top: 0;
+    margin: 0;
+  }
+  .timeline h3 {
+    justify-content: flex-start;
   }
   .topbar nav {
     display: none;
