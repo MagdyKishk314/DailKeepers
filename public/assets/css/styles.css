@@ -618,9 +618,16 @@ h3 {
   background: var(--navy);
   color: var(--paper);
   font: 800 1.4rem/1 var(--display);
-  box-shadow: 0 0 0 8px var(--paper);
+  /* A ring in the section's own background colour, so the dashed line stops short of each circle. */
+  box-shadow: 0 0 0 8px var(--bg);
 }
-.timeline li:first-child::before {
+/* On navy, the circles flip to paper so they stand out. */
+.on-navy .timeline li::before {
+  background: var(--paper);
+  color: var(--navy);
+}
+.timeline li:first-child::before,
+.on-navy .timeline li:first-child::before {
   background: var(--amber);
   color: var(--navy);
 }
