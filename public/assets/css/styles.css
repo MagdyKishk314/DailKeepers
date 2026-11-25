@@ -597,25 +597,39 @@ h3 {
 }
 
 /* ---------- Platforms ---------- */
-.platforms {
+/* ---------- Dialer logos, right under the hero ---------- */
+.logos {
+  padding-block: 48px;
+  border-bottom: 1px solid var(--rule);
+  text-align: center;
+}
+.logos h2 {
+  font: 600 0.95rem/1.4 var(--text);
+  letter-spacing: 0;
+  color: var(--muted);
+}
+.logo-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 28px clamp(36px, 6vw, 80px);
   list-style: none;
-  margin: 36px 0 0;
+  margin: 28px 0 0;
   padding: 0;
 }
-.platforms li {
-  padding: 12px 22px;
-  border: 1.5px solid var(--navy);
-  border-radius: 999px;
-  font: 700 1.1rem/1 var(--display);
+/* Each brand's logo in one ink colour, so the row reads as a set. */
+.logo-row img {
+  display: block;
+  height: 30px;
+  width: auto;
+  filter: brightness(0);
+  opacity: 0.75;
 }
-.platforms .more {
-  border-style: dashed;
-  border-color: var(--rule);
+.logo-more {
+  margin-top: 24px;
   color: var(--muted);
-  font: 600 1rem/1 var(--text);
+  font-size: 0.95rem;
 }
 .fine {
   margin-top: 22px;

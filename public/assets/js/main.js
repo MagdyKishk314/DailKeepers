@@ -70,7 +70,7 @@
     var targets = [].slice.call(
       document.querySelectorAll(
         "main .band h2, main .sub, .console, .rows li, .promise, .steps li, " +
-          ".platforms li, .fine, .note, .faq details, .form"
+          ".logo-row li,.fine, .note, .faq details, .form"
       )
     );
     var revealIO = new IntersectionObserver(
