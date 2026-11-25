@@ -603,8 +603,8 @@ h3 {
   border-bottom: 1px solid var(--rule);
   text-align: center;
 }
-/* Logo marquee: two identical lists side by side. Sliding the track by exactly one list
-   width (-50%) makes the loop seamless. Moves left to right. */
+/* Logo marquee: four identical lists side by side. Sliding the track by half (two lists,
+   about 2600px) makes the loop seamless and keeps wide screens filled. Moves left to right. */
 .marquee {
   overflow: hidden;
   /* Fade the logos in and out at the edges. */
@@ -614,7 +614,7 @@ h3 {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 60s linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
