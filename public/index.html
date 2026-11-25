@@ -42,6 +42,7 @@
   </div>
 </header>
 
+<div class="first-screen">
 <div class="frame">
   <section class="panel on-navy" id="top" aria-labelledby="h-hero">
     <div class="wrap hero-grid">
@@ -68,8 +69,6 @@
     </div>
   </section>
 </div>
-
-<main id="main">
   <section class="on-light logos" id="platforms" aria-label="Dialers we work with">
     <!-- The list is repeated 4 times so the loop is seamless and fills wide screens. The copies are hidden from screen readers. -->
     <div class="marquee">
@@ -110,7 +109,9 @@
     </div>
     <p class="logo-more wrap">and any other power or predictive dialer</p>
   </section>
+</div>
 
+<main id="main">
   <section class="on-light band" id="fix" aria-labelledby="h-fix">
     <div class="wrap">
       <header class="head">
@@ -118,32 +119,41 @@
         <h2 id="h-fix">Three things that quietly drain a dialer budget.</h2>
         <p class="sub">Most owners come to us after trying the obvious fix: buying more. Here is what is usually behind it.</p>
       </header>
-      <ul class="cards">
-        <li class="card">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
-          <h3>Wasting money on <em class="hl">DIDs</em>?</h3>
+      <div class="problems">
+        <article class="problem on-light">
+          <div class="problem-head">
+            <p class="problem-num">01</p>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
+            <h3>Wasting money on <em class="hl">DIDs</em>?</h3>
+          </div>
           <div class="pair">
             <p class="bad"><b>Usually</b>Numbers get flagged as spam or stop being answered, so the quick fix is to buy more. But calls are often spread badly: some numbers burn out while others sit idle, and flagged ones are never retired.</p>
             <p class="good"><b>What we do</b>We match your number count to your agents and call volume, rest or retire flagged numbers, rotate the rest evenly, and cancel the extras, so you only pay for numbers you use.</p>
           </div>
-        </li>
-        <li class="card">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span>
-          <h3>Burning through your <em class="hl">data</em>?</h3>
+        </article>
+        <article class="problem on-navy">
+          <div class="problem-head">
+            <p class="problem-num">02</p>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.7-4 3-9 3s-9-1.3-9-3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/></svg></span>
+            <h3>Burning through your <em class="hl">data</em>?</h3>
+          </div>
           <div class="pair">
             <p class="bad"><b>Usually</b>The same leads get dialed again and again, dead and duplicate numbers stay in the list, and nothing limits the attempts. Fresh data runs out fast, so you buy more, and it burns the same way.</p>
             <p class="good"><b>What we do</b>We clean and dedupe lists before they load, set attempt limits and calling times, and recycle leads on a schedule, so each lead gets a fair number of tries and no more.</p>
           </div>
-        </li>
-        <li class="card">
-          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
-          <h3>Agents left <em class="hl">waiting</em>?</h3>
+        </article>
+        <article class="problem on-light">
+          <div class="problem-head">
+            <p class="problem-num">03</p>
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+            <h3>Agents left <em class="hl">waiting</em>?</h3>
+          </div>
           <div class="pair">
             <p class="bad"><b>Usually</b>Dialing speed is set once and never adjusted. Too slow and agents sit idle. Too fast and calls drop. An empty lead queue or a weak number makes it swing from hour to hour.</p>
             <p class="good"><b>What we do</b>We tune dialing speed to your agents and answer rates, keep the lead queue fed, and keep watching it, so the wait is the same on a Tuesday as on a Friday.</p>
           </div>
-        </li>
-      </ul>
+        </article>
+      </div>
     </div>
   </section>
 

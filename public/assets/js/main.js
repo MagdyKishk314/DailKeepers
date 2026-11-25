@@ -69,7 +69,7 @@
     /* ---------- Fade sections in, once ---------- */
     var targets = [].slice.call(
       document.querySelectorAll(
-        "main .head, .card, .timeline li, .console, .tile, .note, .faq details, " +
+        "main .head, .problem, .timeline li, .console, .tile, .note, .faq details, " +
           "#book .split > div:first-child, .form-card"
       )
     );

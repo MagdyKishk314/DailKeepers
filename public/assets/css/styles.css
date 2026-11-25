@@ -301,16 +301,27 @@ html {
 }
 
 /* ---------- Hero: a light panel inset in the page ---------- */
+/* The hero and the logo row together fill exactly one screen. The hero takes whatever
+   height the logo row leaves, and only grows taller if its content needs more room. */
+.first-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+}
 .frame {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   background: var(--paper);
   padding: 16px;
 }
 .panel {
+  flex: 1;
   display: flex;
   align-items: center;
-  min-height: clamp(620px, calc(100svh - 32px), 940px);
   border-radius: 28px;
-  padding: 112px 0 56px;
+  padding: 100px 0 40px;
 }
 .hero-grid {
   display: grid;
@@ -354,7 +365,7 @@ html {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 20px 0 16px;
+  padding: 16px 0 12px;
   border-bottom: 1px solid var(--rule);
 }
 .tag {
@@ -375,7 +386,7 @@ html {
   grid-template-columns: 8.6rem minmax(0, 1fr);
   gap: 18px;
   align-items: center;
-  padding-block: 22px;
+  padding-block: 16px;
   border-bottom: 1px solid var(--rule);
 }
 .fdesc {
@@ -396,7 +407,7 @@ html {
   font-size: 0.9rem;
 }
 .audit-foot {
-  padding: 16px 0 18px;
+  padding: 12px 0 14px;
   color: var(--muted);
   font-size: 0.88rem;
 }
@@ -478,34 +489,40 @@ h3 {
   font-size: 1.1rem;
 }
 
-/* ---------- Problems: three cards, each "usually" vs "what we do" ---------- */
-.cards {
+/* ---------- Problems: each one is its own panel, title on one side, fix on the other ---------- */
+.problems {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
-.card {
+.problem {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(28px, 4.5vw, 64px);
+  border: 1px solid var(--rule);
+  border-radius: 28px;
+}
+/* Zigzag: the middle panel puts its title on the right. */
+.problem:nth-child(even) .problem-head {
+  order: 2;
+}
+.problem-head {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 32px 28px;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: var(--r-l);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  align-items: flex-start;
+  gap: 20px;
 }
-.card:hover {
-  border-color: var(--navy);
-  box-shadow: 0 18px 40px -24px rgba(14, 34, 56, 0.45);
+.problem-num {
+  font: 600 0.9rem/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--muted);
 }
-.card h3 {
-  font-size: clamp(1.6rem, 2.2vw, 1.9rem);
+.problem h3 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
-  min-height: 2.16em; /* two lines, so the boxes below line up across the cards */
+  letter-spacing: -0.035em;
+  line-height: 1.02;
 }
 /* The key word in a heading, in the brand amber. */
 .hl {
@@ -515,11 +532,15 @@ h3 {
 .icon {
   display: grid;
   place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   background: var(--navy);
   color: var(--amber);
+}
+.on-navy .icon {
+  background: var(--amber);
+  color: var(--navy);
 }
 .icon svg,
 .note svg {
@@ -532,22 +553,20 @@ h3 {
   stroke-linejoin: round;
 }
 .pair {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 14px;
 }
 .pair p {
-  padding: 16px 18px;
+  padding: 20px 22px;
   border-radius: var(--r-m);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--muted);
 }
 .pair b {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 6px;
+  gap: 10px;
+  margin-bottom: 8px;
   font: 800 0.78rem/1 var(--text);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -555,32 +574,47 @@ h3 {
 .pair b::before {
   display: grid;
   place-items: center;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
-  color: #fff;
   font-size: 0.75rem;
   letter-spacing: 0;
 }
+/* "Usually": a quiet tint, muted label. */
 .bad {
-  background: rgba(180, 35, 24, 0.06);
+  background: rgba(14, 34, 56, 0.05);
+}
+.on-navy .bad {
+  background: rgba(247, 245, 240, 0.06);
 }
 .bad b {
-  color: var(--alert);
+  color: var(--muted);
 }
 .bad b::before {
   content: "\2715";
-  background: var(--alert);
+  background: var(--muted);
+  color: var(--bg);
 }
+/* "What we do": amber, the answer. */
 .good {
-  background: rgba(18, 163, 107, 0.09);
+  background: rgba(242, 163, 58, 0.14);
+  box-shadow: inset 4px 0 0 var(--amber);
 }
+.good,
 .good b {
-  color: var(--live);
+  color: var(--fg);
+}
+.on-navy .good {
+  background: var(--paper);
+}
+.on-navy .good,
+.on-navy .good b {
+  color: var(--navy);
 }
 .good b::before {
   content: "\2713";
-  background: var(--live);
+  background: var(--amber);
+  color: var(--navy);
 }
 
 /* ---------- How it works: a numbered timeline ---------- */
@@ -638,8 +672,8 @@ h3 {
 .tag-free {
   padding: 4px 10px;
   border-radius: 999px;
-  background: var(--green);
-  color: #fff;
+  background: var(--amber);
+  color: var(--navy);
   font: 800 0.72rem/1 var(--text);
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -675,8 +709,8 @@ h3 {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: var(--green);
-  box-shadow: 0 0 0 4px rgba(18, 163, 107, 0.25);
+  background: var(--amber);
+  box-shadow: 0 0 0 4px rgba(242, 163, 58, 0.25);
 }
 .legend {
   display: flex;
@@ -696,7 +730,7 @@ h3 {
   border-radius: 3px;
 }
 .key.ok::before {
-  background: var(--green);
+  background: var(--slate-dark);
 }
 .key.watch::before {
   background: var(--amber);
@@ -728,7 +762,7 @@ h3 {
   font-weight: 800;
 }
 .entry.ok {
-  border-left-color: var(--green);
+  border-left-color: var(--slate-dark);
 }
 .entry.watch {
   border-left-color: var(--amber);
@@ -788,12 +822,12 @@ h3 {
 }
 .note svg {
   flex: none;
-  color: var(--live);
+  color: var(--navy);
 }
 
 /* ---------- Dialer logos, right under the hero ---------- */
 .logos {
-  padding-block: 48px;
+  padding-block: 28px;
   border-bottom: 1px solid var(--rule);
   text-align: center;
 }
@@ -842,7 +876,7 @@ h3 {
   opacity: 0.75;
 }
 .logo-more {
-  margin-top: 24px;
+  margin-top: 14px;
   color: var(--muted);
   font-size: 0.95rem;
 }
@@ -929,8 +963,8 @@ h3 {
   height: 24px;
   margin-top: 1px;
   border-radius: 50%;
-  background: var(--green);
-  color: #fff;
+  background: var(--amber);
+  color: var(--navy);
   font-size: 0.8rem;
 }
 .form-card {
@@ -1053,9 +1087,12 @@ h3 {
   .hero-grid {
     grid-template-columns: 1fr;
   }
-  .cards,
+  .problem,
   .faq {
     grid-template-columns: 1fr;
+  }
+  .problem:nth-child(even) .problem-head {
+    order: 0;
   }
   .tiles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1089,7 +1126,7 @@ h3 {
     grid-template-columns: 1fr auto;
   }
   .panel {
-    padding-top: 112px;
+    padding-top: 104px;
   }
   .hero-copy h1 {
     max-width: 16ch;
@@ -1107,9 +1144,6 @@ h3 {
   .tiles {
     grid-template-columns: 1fr;
   }
-  .card {
-    padding: 26px 22px;
-  }
   .actions .btn {
     width: 100%;
   }
@@ -1122,6 +1156,39 @@ h3 {
   }
   .entry {
     grid-template-columns: 4.6rem 1fr;
+  }
+}
+
+/* Short laptop screens (e.g. 1366x768): tighten the hero so it and the logo row still fit
+   in one screen. Only on wide layouts; on phones the hero simply scrolls. */
+@media (min-width: 961px) and (max-height: 860px) {
+  .panel {
+    padding: 92px 0 24px;
+  }
+  .hero-copy h1 {
+    font-size: clamp(2.5rem, 4.2vw, 3.6rem);
+  }
+  .lede {
+    margin-top: 18px;
+    font-size: 1.05rem;
+  }
+  .actions {
+    margin-top: 24px;
+  }
+  .finding {
+    padding-block: 10px;
+  }
+  .num {
+    font-size: 2.2rem;
+  }
+  .fdesc {
+    font-size: 0.9rem;
+  }
+  .audit-foot {
+    font-size: 0.8rem;
+  }
+  .logos {
+    padding-block: 20px;
   }
 }
 
