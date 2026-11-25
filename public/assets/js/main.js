@@ -69,8 +69,8 @@
     /* ---------- Fade sections in, once ---------- */
     var targets = [].slice.call(
       document.querySelectorAll(
-        "main .band h2, main .sub, .console, .rows li, .promise, .steps li, " +
-          ".fine,.note, .faq details, .form"
+        "main .head, .card, .timeline li, .console, .tile, .note, .faq details, " +
+          "#book .split > div:first-child, .form-card"
       )
     );
     var revealIO = new IntersectionObserver(
