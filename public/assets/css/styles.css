@@ -676,8 +676,8 @@ h3 {
   font-size: 0.95rem;
 }
 .big {
-  margin-bottom: 8px;
-  font: 800 clamp(2.6rem, 4vw, 3.4rem) / 1 var(--display);
+  margin-bottom: 4px;
+  font: 800 clamp(2rem, 3vw, 2.7rem) / 1 var(--display);
   letter-spacing: -0.04em;
   color: var(--amber);
 }
