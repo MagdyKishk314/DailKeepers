@@ -495,7 +495,7 @@ h3 {
 }
 .problem {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
   gap: clamp(32px, 5vw, 72px);
   align-items: start;
   padding-block: clamp(40px, 5vw, 64px);
@@ -510,10 +510,10 @@ h3 {
   flex: none;
 }
 .problem h3 {
-  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
   font-weight: 800;
-  letter-spacing: -0.035em;
-  line-height: 1.02;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
 }
 /* The key word in a heading, in the brand amber. */
 .hl {
@@ -523,75 +523,52 @@ h3 {
 .icon {
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   background: var(--navy);
   color: var(--amber);
 }
 .icon svg,
 .note svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: currentColor;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+/* "Usually" and "What we do": plain text side by side, each under a short rule. */
 .pair {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 3vw, 40px);
 }
 .pair p {
-  padding: 20px 22px;
-  border-radius: var(--r-m);
-  line-height: 1.6;
+  padding-top: 16px;
+  border-top: 2px solid var(--rule);
+  font-size: 0.98rem;
+  line-height: 1.65;
   color: var(--muted);
 }
 .pair b {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: block;
   margin-bottom: 8px;
-  font: 800 0.78rem/1 var(--text);
-  letter-spacing: 0.1em;
+  font: 800 0.75rem/1 var(--text);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-}
-.pair b::before {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  font-size: 0.75rem;
-  letter-spacing: 0;
-}
-/* "Usually": a quiet tint, muted label. */
-.bad {
-  background: rgba(14, 34, 56, 0.05);
 }
 .bad b {
   color: var(--muted);
 }
-.bad b::before {
-  content: "\2715";
-  background: var(--muted);
-  color: var(--bg);
-}
-/* "What we do": amber, the answer. */
-.good {
-  background: rgba(242, 163, 58, 0.14);
-  box-shadow: inset 4px 0 0 var(--amber);
+/* "What we do" is the answer: amber rule, darker text. */
+.pair .good {
+  border-top-color: var(--amber);
 }
 .good,
 .good b {
   color: var(--fg);
-}
-.good b::before {
-  content: "\2713";
-  background: var(--amber);
-  color: var(--navy);
 }
 
 /* ---------- How it works: a numbered timeline ---------- */
@@ -1113,7 +1090,8 @@ h3 {
     padding-bottom: 40px;
   }
   .form,
-  .tiles {
+  .tiles,
+  .pair {
     grid-template-columns: 1fr;
   }
   .actions .btn {
