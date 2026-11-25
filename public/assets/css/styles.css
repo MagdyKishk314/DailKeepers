@@ -603,20 +603,41 @@ h3 {
   border-bottom: 1px solid var(--rule);
   text-align: center;
 }
-.logos h2 {
-  font: 600 0.95rem/1.4 var(--text);
-  letter-spacing: 0;
-  color: var(--muted);
+/* Logo marquee: two identical lists side by side. Sliding the track by exactly one list
+   width (-50%) makes the loop seamless. Moves left to right. */
+.marquee {
+  overflow: hidden;
+  /* Fade the logos in and out at the edges. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 .logo-row {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
-  gap: 28px clamp(36px, 6vw, 80px);
+  gap: clamp(48px, 6vw, 88px);
+  /* Same as the gap, so the space between the two lists matches the space between logos. */
+  padding-right: clamp(48px, 6vw, 88px);
   list-style: none;
-  margin: 28px 0 0;
-  padding: 0;
+  margin: 0;
+}
+.logo-row li {
+  flex: none;
 }
 /* Each brand's logo in one ink colour, so the row reads as a set. */
 .logo-row img {
@@ -844,5 +865,24 @@ h3 {
   .reveal {
     opacity: 1;
     transition: none;
+  }
+  /* No scrolling: show one centred, wrapped row of logos instead. */
+  .marquee {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .marquee-track {
+    animation: none;
+    width: auto;
+    justify-content: center;
+  }
+  .logo-row {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 28px;
+    padding: 0 16px;
+  }
+  .logo-row[aria-hidden="true"] {
+    display: none;
   }
 }
