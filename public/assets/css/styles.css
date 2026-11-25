@@ -149,6 +149,33 @@ code,
 .skip:focus {
   top: 12px;
 }
+/* Read by screen readers and crawlers, not shown. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* Hidden until it gets keyboard focus. */
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+main:focus {
+  outline: none;
+}
 .sprite {
   position: absolute;
 }
@@ -549,35 +576,32 @@ h3 {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-/* "Usually" and "What we do": plain text side by side, each under a short rule. */
+/* "Usually" and "What we do": a description list, plain text side by side, each under a short rule. */
 .pair {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(24px, 3vw, 40px);
+  margin: 0;
 }
-.pair p {
+.pair > div {
   padding-top: 16px;
   border-top: 2px solid var(--rule);
   font-size: 0.98rem;
   line-height: 1.65;
   color: var(--muted);
 }
-.pair b {
-  display: block;
+.pair dt {
   margin-bottom: 8px;
   font: 800 0.75rem/1 var(--text);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.bad b {
-  color: var(--muted);
+.pair dd {
+  margin: 0;
 }
 /* "What we do" is the answer: amber rule, darker text. */
-.pair .good {
+.pair > .good {
   border-top-color: var(--amber);
-}
-.good,
-.good b {
   color: var(--fg);
 }
 
@@ -721,8 +745,20 @@ h3 {
   width: max-content;
   animation: marquee 60s linear infinite;
 }
-.marquee:hover .marquee-track {
+.marquee:hover .marquee-track,
+.logos.is-paused .marquee-track {
   animation-play-state: paused;
+}
+.marquee-toggle {
+  display: block;
+  margin: 0 auto 16px;
+  padding: 8px 16px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--navy);
+  font: 600 0.9rem/1 var(--text);
+  cursor: pointer;
 }
 @keyframes marquee {
   from {

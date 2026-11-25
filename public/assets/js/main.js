@@ -59,6 +59,17 @@
     });
   }
 
+  /* ---------- Logo row: keyboard-reachable pause button ---------- */
+  var logos = document.querySelector(".logos");
+  var toggle = logos && logos.querySelector(".marquee-toggle");
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var paused = logos.classList.toggle("is-paused");
+      toggle.setAttribute("aria-pressed", String(paused));
+      toggle.textContent = paused ? "Play logo animation" : "Pause logo animation";
+    });
+  }
+
   /* ---------- Hero signal: jagged on the left, steady on the right ---------- */
   var signal = document.querySelector(".signal");
   if (signal) {
