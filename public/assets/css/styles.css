@@ -489,34 +489,25 @@ h3 {
   font-size: 1.1rem;
 }
 
-/* ---------- Problems: each one is its own panel, title on one side, fix on the other ---------- */
+/* ---------- Problems: one row each, icon and title on the left, the fix on the right ---------- */
 .problems {
-  display: grid;
-  gap: 24px;
+  border-top: 1px solid var(--rule);
 }
 .problem {
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-  padding: clamp(28px, 4.5vw, 64px);
-  border: 1px solid var(--rule);
-  border-radius: 28px;
-}
-/* Zigzag: the middle panel puts its title on the right. */
-.problem:nth-child(even) .problem-head {
-  order: 2;
+  align-items: start;
+  padding-block: clamp(40px, 5vw, 64px);
+  border-bottom: 1px solid var(--rule);
 }
 .problem-head {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
+  align-items: center;
+  gap: 18px;
 }
-.problem-num {
-  font: 600 0.9rem/1 var(--mono);
-  letter-spacing: 0.1em;
-  color: var(--muted);
+.problem-head .icon {
+  flex: none;
 }
 .problem h3 {
   font-size: clamp(2rem, 3.6vw, 3rem);
@@ -537,10 +528,6 @@ h3 {
   border-radius: 16px;
   background: var(--navy);
   color: var(--amber);
-}
-.on-navy .icon {
-  background: var(--amber);
-  color: var(--navy);
 }
 .icon svg,
 .note svg {
@@ -584,9 +571,6 @@ h3 {
 .bad {
   background: rgba(14, 34, 56, 0.05);
 }
-.on-navy .bad {
-  background: rgba(247, 245, 240, 0.06);
-}
 .bad b {
   color: var(--muted);
 }
@@ -603,13 +587,6 @@ h3 {
 .good,
 .good b {
   color: var(--fg);
-}
-.on-navy .good {
-  background: var(--paper);
-}
-.on-navy .good,
-.on-navy .good b {
-  color: var(--navy);
 }
 .good b::before {
   content: "\2713";
@@ -875,11 +852,6 @@ h3 {
   filter: brightness(0);
   opacity: 0.75;
 }
-.logo-more {
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
 .fine {
   margin-top: 22px;
   color: var(--muted);
@@ -1091,8 +1063,8 @@ h3 {
   .faq {
     grid-template-columns: 1fr;
   }
-  .problem:nth-child(even) .problem-head {
-    order: 0;
+  .problem {
+    gap: 24px;
   }
   .tiles {
     grid-template-columns: repeat(2, minmax(0, 1fr));
