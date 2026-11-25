@@ -1,0 +1,38 @@
+# Dialkeepers
+
+> Dialkeepers manages outbound dialers for small call centers, so owners stop wasting money on extra phone numbers (DIDs) and data. Keepers (dialer admins based in Egypt) audit your numbers, data and dialing, fix the cause, keep it running day to day, reply within 15 minutes and send a weekly performance report. The first step is a free dialer audit call.
+
+## What we fix
+
+- **Wasting money on DIDs:** numbers get flagged as spam or stop being answered, so owners buy more. We match the number count to agents and call volume, rest or retire flagged numbers, rotate the rest evenly and cancel the extras.
+- **Burning through data:** the same leads get dialed again and again, dead and duplicate numbers stay in the list, and nothing limits attempts. We clean and dedupe lists, set attempt limits and calling times, and recycle leads on a schedule.
+- **Agents left waiting:** dialing speed is set once and never adjusted. We tune it to the agents and answer rates, keep the lead queue fed and keep watching it, so wait times stay steady.
+
+## How it works
+
+1. Free audit call: we ask about your numbers, data, seats and problems, and explain how we would fix them. No access needed.
+2. We check your dialer, with read-only access first.
+3. We fix it and keep it fixed: your Keeper manages numbers, data and dialing day to day.
+4. A weekly dialer performance report: what we changed, what you saved and how steady your dialing was.
+
+## Commitments
+
+- 15-minute response SLA.
+- We manage your dialer, so your team can focus on selling.
+- Optimized to save money: you stop paying for numbers and data you don't need.
+- Weekly performance reports.
+
+Each commitment is written into the agreement before work starts. We do not guarantee sales or contact rates; those also depend on your offer, lead quality and agents.
+
+## Dialers we work with
+
+ReadyMode, Convoso, GoHighLevel, CallTools, VICIdial, Enzo Dialer and any other power or predictive dialer. You keep your dialer; we work inside it.
+
+## Pricing
+
+Quoted after the audit call, based on your dialer, number of seats and what needs managing.
+
+## Links
+
+- [Website](https://dialkeepers.pro/): full details and FAQ
+- [Free dialer audit](https://dialkeepers.pro/#book): request form

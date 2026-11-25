@@ -552,10 +552,14 @@ h3 {
   letter-spacing: -0.025em;
   line-height: 1.1;
 }
-/* The key word in a heading, in the brand amber. */
+/* The key word in a heading: dark text (keeps full contrast) on an amber highlighter stripe. */
 .hl {
   font-style: normal;
-  color: var(--amber);
+  color: inherit;
+  background: linear-gradient(transparent 48%, rgba(242, 163, 58, 0.55) 48%, rgba(242, 163, 58, 0.55) 94%, transparent 94%);
+  padding: 0 0.08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 .icon {
   display: grid;
