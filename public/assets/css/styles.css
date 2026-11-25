@@ -501,6 +501,17 @@ h3 {
   border-color: var(--navy);
   box-shadow: 0 18px 40px -24px rgba(14, 34, 56, 0.45);
 }
+.card h3 {
+  font-size: clamp(1.6rem, 2.2vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  min-height: 2.16em; /* two lines, so the boxes below line up across the cards */
+}
+/* The key word in a heading, in the brand amber. */
+.hl {
+  font-style: normal;
+  color: var(--amber);
+}
 .icon {
   display: grid;
   place-items: center;
