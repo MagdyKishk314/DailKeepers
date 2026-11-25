@@ -436,7 +436,7 @@ html {
 .sticky {
   align-self: start;
   position: sticky;
-  top: 32px;
+  top: 104px; /* below the floating navbar (12px offset + its height + a gap), same as scroll-padding-top */
 }
 h2 {
   font-size: clamp(2rem, 4.2vw, 3.3rem);
