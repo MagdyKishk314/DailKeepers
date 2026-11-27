@@ -36,7 +36,7 @@
     /* ---------- Fade sections in, once ---------- */
     var targets = [].slice.call(
       document.querySelectorAll(
-        "main .head, .problem, .timeline li, .tile, .note, .faq details, " +
+        "main .head, .problem, .timeline li, .tile, .tier, .note, .faq details, " +
           "#book .split > div:first-child, .form-card"
       )
     );
@@ -56,6 +56,32 @@
       el.style.setProperty("--d", delay + "ms");
       el.classList.add("reveal");
       revealIO.observe(el);
+    });
+  }
+
+  /* ---------- Products dropdown: click or tap to open, Esc or a click outside to close ---------- */
+  var menuItem = document.querySelector(".has-menu");
+  var menuBtn = menuItem && menuItem.querySelector(".menu-btn");
+  if (menuBtn) {
+    var setMenu = function (open) {
+      menuItem.classList.toggle("open", open);
+      menuBtn.setAttribute("aria-expanded", String(open));
+    };
+    menuBtn.addEventListener("click", function () {
+      setMenu(!menuItem.classList.contains("open"));
+    });
+    document.addEventListener("click", function (ev) {
+      if (!menuItem.contains(ev.target)) setMenu(false);
+    });
+    document.addEventListener("keydown", function (ev) {
+      if (ev.key === "Escape" && menuItem.classList.contains("open")) {
+        setMenu(false);
+        menuBtn.focus();
+      }
+    });
+    // Close when keyboard focus moves out of the menu.
+    menuItem.addEventListener("focusout", function (ev) {
+      if (!menuItem.contains(ev.relatedTarget)) setMenu(false);
     });
   }
 

@@ -2,7 +2,15 @@
 
 > Dialkeepers manages outbound dialers for small call centers, so owners stop wasting money on extra phone numbers (DIDs) and data. Keepers (dialer admins based in Egypt) audit your numbers, data and dialing, fix the cause, keep it running day to day, reply within 15 minutes and send a weekly performance report. The first step is a free dialer audit call.
 
-## What we fix
+## Products
+
+- [Managing Your Dialer](https://dialkeepers.pro/): the core service. Keepers run your dialer for you: DIDs, data, dialing speed, a 15-minute response SLA and a weekly report.
+- [AI Automation](https://dialkeepers.pro/ai-automation): AI checks dispositions, scores a weekly sample of calls on your checklist and sends alerts (wait time, drop rate, flagged numbers) to Telegram or Slack. Built on your own AI account and keys, alert-only first, with written consent for recordings. One-time setup fee plus monthly support.
+- [Build Your CRM](https://dialkeepers.pro/build-your-crm): an automated Google Sheet (dialer exports load in, follow-up reminders, a dashboard tab) or a custom CRM (own login and roles, pipeline stages, dialer webhooks or API, reports). One-time setup fee plus monthly support.
+
+Each product can be bought on its own. The free call is where we find out which one fits.
+
+## Managing Your Dialer: what we fix
 
 - **Wasting money on DIDs:** numbers get flagged as spam or stop being answered, so owners buy more. We match the number count to agents and call volume, rest or retire flagged numbers, rotate the rest evenly and cancel the extras.
 - **Burning through data:** the same leads get dialed again and again, dead and duplicate numbers stay in the list, and nothing limits attempts. We clean and dedupe lists, set attempt limits and calling times, and recycle leads on a schedule.
@@ -36,3 +44,5 @@ Quoted after the audit call, based on your dialer, number of seats and what need
 
 - [Website](https://dialkeepers.pro/): full details and FAQ
 - [Free dialer audit](https://dialkeepers.pro/#book): request form
+- [AI Automation](https://dialkeepers.pro/ai-automation)
+- [Build Your CRM](https://dialkeepers.pro/build-your-crm)
