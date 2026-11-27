@@ -917,6 +917,19 @@ h3 {
   border: 1px solid var(--rule);
   border-radius: var(--r-l);
 }
+.tiers-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.tier .more {
+  margin-top: auto;
+  padding-top: 6px;
+  color: var(--fg);
+  font-weight: 700;
+  text-decoration: none;
+}
+.tier .more:hover {
+  text-decoration: underline;
+}
 .tier-featured {
   background: var(--navy);
   border-color: var(--navy);
@@ -1261,7 +1274,8 @@ h3 {
     transform: none;
     top: calc(100% + 10px);
   }
-  .tiers {
+  .tiers,
+  .tiers-3 {
     grid-template-columns: 1fr;
   }
   .panel-short {
@@ -1281,6 +1295,13 @@ h3 {
   }
   .topbar .btn-small {
     padding-inline: 16px;
+  }
+  .topbar .nav-links a,
+  .menu-btn {
+    padding-inline: 10px;
+  }
+  .topbar .nav-links {
+    gap: 0;
   }
   .signal {
     height: 120px;
@@ -1306,6 +1327,26 @@ h3 {
   }
   .actions .btn {
     width: 100%;
+  }
+}
+
+/* Very narrow phones (360px): a wider bar and tighter items so everything stays on one line. */
+@media (max-width: 400px) {
+  .topbar-inner {
+    width: calc(100% - 24px);
+    gap: 4px;
+    padding-left: 10px;
+  }
+  .topbar .nav-links a,
+  .menu-btn {
+    padding-inline: 8px;
+  }
+  .topbar .btn-small {
+    padding-inline: 14px;
+    white-space: nowrap;
+  }
+  .topbar .brand svg {
+    flex: none;
   }
 }
 
