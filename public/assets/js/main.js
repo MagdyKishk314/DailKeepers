@@ -171,6 +171,8 @@
     var booking = document.getElementById("booking");
     var frame = document.getElementById("booking-frame");
     if (!booking || !frame) return;
+    // Tell the Meta Pixel a lead came in.
+    if (window.fbq) window.fbq("track", "Lead");
     form.hidden = true;
     booking.hidden = false;
     var heading = document.getElementById("booking-h");
