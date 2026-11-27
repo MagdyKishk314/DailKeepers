@@ -5,13 +5,13 @@ import nodemailer from "nodemailer";
 const FIELDS = {
   name: "Name",
   email: "Email",
+  phone: "Phone",
   company: "Company",
   platform: "Dialer",
   seats: "Seats",
-  spend: "Monthly spend on numbers and data",
   message: "Message",
 };
-const REQUIRED = ["name", "email", "company", "platform"];
+const REQUIRED = ["name", "email", "phone", "company", "platform"];
 
 const escapeHtml = (s) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -92,8 +92,12 @@ export async function handleLead(req, res) {
 
   const lead = {};
   for (const key of Object.keys(FIELDS)) lead[key] = String(body[key] ?? "").trim().slice(0, 2000);
-  if (REQUIRED.some((key) => !lead[key])) return reply(400, "Fill in your name, email, company and dialer.");
+  if (REQUIRED.some((key) => !lead[key])) return reply(400, "Fill in your name, email, phone, company and dialer.");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(lead.email)) return reply(400, "Enter a valid work email.");
+  // Digits plus the usual separators, and at least 7 digits.
+  if (!/^[+\d\s().-]+$/.test(lead.phone) || lead.phone.replace(/\D/g, "").length < 7) {
+    return reply(400, "Enter a valid phone number.");
+  }
 
   try {
     await sendEmail(lead);
