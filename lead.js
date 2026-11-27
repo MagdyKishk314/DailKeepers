@@ -4,9 +4,9 @@ import nodemailer from "nodemailer";
 
 const FIELDS = {
   name: "Name",
+  company: "Company",
   email: "Email",
   phone: "Phone",
-  company: "Company",
   platform: "Dialer",
   seats: "Seats",
   message: "Message",

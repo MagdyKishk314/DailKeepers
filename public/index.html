@@ -240,15 +240,15 @@
       <div class="form-card">
         <form class="form" id="book-form" action="/api/lead" method="post" aria-labelledby="h-book">
           <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" maxlength="120" required></div>
-          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
           <div class="field"><label for="f-co">Company</label><input id="f-co" name="company" autocomplete="organization" maxlength="160" required></div>
+          <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
+          <div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="Include country code" required></div>
           <div class="field"><label for="f-platform">Your dialer</label>
             <input id="f-platform" name="platform" list="dialers" maxlength="80" placeholder="Pick one or type yours" required>
             <datalist id="dialers">
               <option value="ReadyMode"></option><option value="Convoso"></option><option value="GoHighLevel"></option><option value="CallTools"></option><option value="VICIdial"></option><option value="Enzo Dialer"></option>
             </datalist></div>
           <div class="field"><label for="f-seats">Agent seats</label><input id="f-seats" name="seats" inputmode="numeric" maxlength="20" placeholder="For example, 25"></div>
-          <div class="field"><label for="f-phone">Phone number</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="Include country code" required></div>
           <div class="field wide"><label for="f-msg">What is frustrating you most about your dialer?</label><textarea id="f-msg" name="message" maxlength="2000"></textarea></div>
           <div class="hp" aria-hidden="true"><label for="f-web">Leave this empty</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
           <div class="form-foot">
