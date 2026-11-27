@@ -138,7 +138,7 @@
   }
 
   /* ---------- Booking: after the form is sent, swap it for the Calendly calendar ---------- */
-  var CALENDLY_URL = "https://calendly.com/magdy314-work?background_color=f7f5f0&primary_color=f2a33a";
+  var CALENDLY_URL = "https://calendly.com/magdy314-work/free-audit?background_color=f7f5f0&primary_color=f2a33a";
   var CALENDLY_JS = "https://assets.calendly.com/assets/external/widget.js";
 
   function showBooking(lead) {
