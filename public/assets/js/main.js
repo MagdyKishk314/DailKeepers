@@ -4,7 +4,7 @@
    - animates the hero signal (jagged when unmanaged, steady once managed)
    - fades sections in once, as they arrive
    - firms up the top bar once the page has scrolled
-   - sends the form without a page reload */
+   - sends the form without a page reload, then shows the Calendly calendar */
 (function () {
   "use strict";
 
@@ -137,6 +137,35 @@
     }
   }
 
+  /* ---------- Booking: after the form is sent, swap it for the Calendly calendar ---------- */
+  var CALENDLY_URL = "https://calendly.com/magdy314-work?background_color=f7f5f0&primary_color=f2a33a";
+  var CALENDLY_JS = "https://assets.calendly.com/assets/external/widget.js";
+
+  function showBooking(lead) {
+    var booking = document.getElementById("booking");
+    var frame = document.getElementById("booking-frame");
+    if (!booking || !frame) return;
+    form.hidden = true;
+    booking.hidden = false;
+    var heading = document.getElementById("booking-h");
+    if (heading) heading.focus();
+
+    // Pre-fill the visitor's name and email in Calendly.
+    var url =
+      CALENDLY_URL +
+      "&name=" + encodeURIComponent(lead.name || "") +
+      "&email=" + encodeURIComponent(lead.email || "");
+    var init = function () {
+      window.Calendly.initInlineWidget({ url: url, parentElement: frame });
+    };
+    if (window.Calendly) return init();
+    var script = document.createElement("script");
+    script.src = CALENDLY_JS;
+    script.async = true;
+    script.onload = init;
+    document.head.appendChild(script);
+  }
+
   /* ---------- Form ---------- */
   var form = document.getElementById("book-form");
   var msg = document.getElementById("form-msg");
@@ -169,8 +198,7 @@
             })
             .then(function (data) {
               if (res.ok && data.ok) {
-                form.reset();
-                msg.textContent = "Sent. We will reply by email with a time for your audit call.";
+                showBooking(payload);
               } else {
                 msg.textContent = data.message || "Something went wrong. Try again in a minute.";
               }

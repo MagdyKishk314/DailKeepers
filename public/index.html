@@ -256,6 +256,13 @@
             <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
           </div>
         </form>
+        <!-- Shown by main.js after the form is sent: the visitor books the audit call right away. -->
+        <div class="booking" id="booking" hidden>
+          <h3 id="booking-h" tabindex="-1">Thanks. Now pick a time for your audit call.</h3>
+          <p>Your details are in. Choose a slot below and it goes straight into our calendar.</p>
+          <div class="booking-frame" id="booking-frame"></div>
+          <p class="booking-alt">Calendar not loading? <a href="https://calendly.com/magdy314-work" target="_blank" rel="noopener">Open it in a new tab</a>.</p>
+        </div>
       </div>
     </div>
   </section>

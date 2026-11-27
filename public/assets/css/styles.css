@@ -102,6 +102,10 @@ body {
   color: var(--navy);
   -webkit-font-smoothing: antialiased;
 }
+/* The hidden attribute always wins over display rules (the form is a grid, for example). */
+[hidden] {
+  display: none !important;
+}
 img,
 svg {
   display: block;
@@ -925,6 +929,30 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   gap: 20px;
+}
+/* The calendar that replaces the form once it is sent. */
+.booking h3 {
+  font-size: 1.5rem;
+}
+.booking h3:focus {
+  outline: none;
+}
+.booking > p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+.booking-frame {
+  min-width: 320px;
+  height: 700px;
+  margin-top: 20px;
+  border-radius: var(--r-m);
+  overflow: hidden;
+  background: var(--paper);
+}
+.booking .booking-alt,
+.notice .booking-alt {
+  margin-top: 12px;
+  font-size: 0.9rem;
 }
 .form-msg {
   color: var(--muted);
