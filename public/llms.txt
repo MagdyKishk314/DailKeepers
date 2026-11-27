@@ -5,7 +5,7 @@
 ## Services
 
 - [Managing Your Dialer](https://dialkeepers.pro/): the core service. Keepers run your dialer for you: DIDs, data, dialing speed, a 15-minute response SLA and a weekly report.
-- [AI Automation](https://dialkeepers.pro/ai-automation): we find the repetitive work a call center does by hand and build AI automations that do it, on the client's own accounts and AI keys. Examples: AI Leads Auto Qualifier (scores new leads and sends only qualified ones to the dialer), AI Call Reviewer (checks dispositions and scores a sample of calls) and AI Daily Report (a plain-English summary of dialer numbers in Telegram or Slack). A person approves before anything changes. One-time setup fee per automation plus monthly support.
+- [AI Automation](https://dialkeepers.pro/ai-automation): we find the repetitive work a call center does by hand and build AI automations that do it, on the client's own accounts and AI keys. Examples: AI Leads Auto Qualifier (scores new leads and sends only qualified ones to the dialer), AI Agent Coach (listens to random calls through the day, warns you when an agent goes off track and builds a training plan per agent) and AI Daily Report (a plain-English summary of dialer numbers in Telegram or Slack). A person approves before anything changes. One-time setup fee per automation plus monthly support.
 - [Build Your CRM](https://dialkeepers.pro/build-your-crm): an automated Google Sheet (dialer exports load in, follow-up reminders, a dashboard tab) or a custom CRM (own login and roles, pipeline stages, dialer webhooks or API, reports). One-time setup fee plus monthly support.
 
 Each service can be bought on its own. The free call is where we find out which one fits.
